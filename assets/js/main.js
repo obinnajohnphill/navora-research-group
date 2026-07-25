@@ -79,6 +79,7 @@ document.addEventListener('click', (e) => {
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
+const thankYouMessage = document.getElementById('thankYouMessage');
 
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
@@ -101,6 +102,10 @@ if (contactForm) {
             formStatus.className = 'form-status';
         }
 
+        if (thankYouMessage) {
+            thankYouMessage.hidden = true;
+        }
+
         if (submitButton) {
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
@@ -120,6 +125,9 @@ if (contactForm) {
                     const senderName = nameInput?.value?.trim() || 'there';
                     formStatus.textContent = `Thank you, ${senderName}! Your message has been sent successfully.`;
                     formStatus.className = 'form-status success';
+                }
+                if (thankYouMessage) {
+                    thankYouMessage.hidden = false;
                 }
                 contactForm.reset();
             } else {

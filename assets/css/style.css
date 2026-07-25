@@ -686,6 +686,24 @@ section {
     cursor: not-allowed;
 }
 
+.thank-you-message {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(15, 123, 70, 0.08);
+    border: 1px solid rgba(15, 123, 70, 0.2);
+    border-radius: var(--radius-md);
+}
+
+.thank-you-message h4 {
+    color: #0f7b46;
+    margin-bottom: 0.5rem;
+}
+
+.thank-you-message p {
+    margin: 0;
+    color: var(--text-dark);
+}
+
 /* Footer */
 .footer {
     background: var(--dark-blue);
