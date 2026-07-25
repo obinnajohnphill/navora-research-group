@@ -166,8 +166,8 @@ a:hover {
 }
 
 .logo-image {
-    width: 72px;
-    height: 72px;
+    width: 112px;
+    height: 112px;
     border-radius: var(--radius-md);
     object-fit: cover;
     display: block;
