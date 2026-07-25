@@ -44,7 +44,7 @@ This repository contains the official website for Navora Research Group.
 - ✅ Modern, professional UI/UX
 - ✅ Smooth scrolling and animations
 - ✅ Accessible navigation
-- ✅ SEO optimized
+- ✅ SEO optimised
 - ✅ Fast loading performance
 - ✅ Cross-browser compatible
 

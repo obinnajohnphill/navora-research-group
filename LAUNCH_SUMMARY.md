@@ -56,7 +56,7 @@ A fully professional, responsive website for Navora Research Group with:
 - ✅ Dropdown menus for research areas
 - ✅ Mobile-responsive navigation
 - ✅ Accessibility features
-- ✅ Performance optimized
+- ✅ Performance optimised
 - ✅ Cross-browser compatible
 
 ### 5. **Repository & Deployment** ✅
@@ -165,7 +165,7 @@ navora-research-group/
 
 - [x] Responsive design (mobile, tablet, desktop)
 - [x] Fast loading (<1 second)
-- [x] SEO optimized
+- [x] SEO optimised
 - [x] Accessible navigation
 - [x] Professional branding
 - [x] Clear call-to-actions
@@ -180,7 +180,7 @@ navora-research-group/
 
 ## 🎯 Outcome
 
-You now have a **world-class, professional research organization website** that:
+You now have a **world-class, professional research organisation website** that:
 
 ✅ Looks credible and trustworthy  
 ✅ Communicates your mission clearly  
@@ -208,7 +208,7 @@ When you visit your GitHub repository, you'll see:
 
 **Congratulations on launching Navora Research Group! 🎊**
 
-The foundation is set for a world-class research organization.
+The foundation is set for a world-class research organisation.
 
 ---
 
