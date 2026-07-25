@@ -165,17 +165,12 @@ a:hover {
     color: var(--dark-blue);
 }
 
-.logo-icon {
+.logo-image {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-teal) 100%);
     border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1.5rem;
+    object-fit: cover;
+    display: block;
 }
 
 .nav-menu {
@@ -692,6 +687,11 @@ section {
     margin-bottom: var(--spacing-sm);
     font-weight: 600;
     font-size: 1.125rem;
+}
+
+.footer-logo-image {
+    width: 42px;
+    height: 42px;
 }
 
 .footer-column h4 {
