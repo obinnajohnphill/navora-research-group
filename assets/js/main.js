@@ -78,24 +78,64 @@ document.addEventListener('click', (e) => {
 
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
-        
-        // Display success message (in production, this would send to a backend)
-        alert(`Thank you for your message, ${formData.name}! We'll get back to you soon at ${formData.email}.`);
-        
-        // Reset form
-        contactForm.reset();
+
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const emailInput = document.getElementById('email');
+        const nameInput = document.getElementById('name');
+        const replyToInput = contactForm.querySelector('input[name="_replyto"]');
+
+        if (replyToInput && emailInput) {
+            replyToInput.value = emailInput.value;
+        }
+
+        const originalButtonText = submitButton?.textContent || 'Send Message';
+        const formData = new FormData(contactForm);
+
+        if (formStatus) {
+            formStatus.textContent = 'Sending your message...';
+            formStatus.className = 'form-status';
+        }
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: contactForm.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                if (formStatus) {
+                    const senderName = nameInput?.value?.trim() || 'there';
+                    formStatus.textContent = `Thank you, ${senderName}! Your message has been sent successfully.`;
+                    formStatus.className = 'form-status success';
+                }
+                contactForm.reset();
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            if (formStatus) {
+                formStatus.textContent = 'Sorry, there was a problem sending your message. Please email info@navoraresearch.org directly.';
+                formStatus.className = 'form-status error';
+            }
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        }
     });
 }
 

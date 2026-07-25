@@ -345,7 +345,9 @@
                     </div>
                 </div>
                 <div class="contact-form-container">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/meeypdje" method="POST">
+                        <input type="hidden" name="_subject" value="New contact form submission from Navora Research Group website">
+                        <input type="hidden" name="_replyto" value="">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -362,6 +364,7 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
+                        <p class="form-status" id="formStatus" aria-live="polite"></p>
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
