@@ -77,74 +77,16 @@ document.addEventListener('click', (e) => {
 });
 
 // Contact form handling
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
 const thankYouMessage = document.getElementById('thankYouMessage');
+const urlParams = new URLSearchParams(window.location.search);
 
-if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
+if (urlParams.get('submitted') === 'true' && thankYouMessage) {
+    thankYouMessage.hidden = false;
 
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const emailInput = document.getElementById('email');
-        const nameInput = document.getElementById('name');
-        const replyToInput = contactForm.querySelector('input[name="_replyto"]');
-
-        if (replyToInput && emailInput) {
-            replyToInput.value = emailInput.value;
-        }
-
-        const originalButtonText = submitButton?.textContent || 'Send Message';
-        const formData = new FormData(contactForm);
-
-        if (formStatus) {
-            formStatus.textContent = 'Sending your message...';
-            formStatus.className = 'form-status';
-        }
-
-        if (thankYouMessage) {
-            thankYouMessage.hidden = true;
-        }
-
-        if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-        }
-
-        try {
-            const response = await fetch(contactForm.action, {
-                method: contactForm.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                if (formStatus) {
-                    const senderName = nameInput?.value?.trim() || 'there';
-                    formStatus.textContent = `Thank you, ${senderName}! Your message has been sent successfully.`;
-                    formStatus.className = 'form-status success';
-                }
-                if (thankYouMessage) {
-                    thankYouMessage.hidden = false;
-                }
-                contactForm.reset();
-            } else {
-                throw new Error('Submission failed');
-            }
-        } catch (error) {
-            if (formStatus) {
-                formStatus.textContent = 'Sorry, there was a problem sending your message. Please email info@navoraresearch.org directly.';
-                formStatus.className = 'form-status error';
-            }
-        } finally {
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
-            }
-        }
-    });
+    if (window.history.replaceState) {
+        const cleanUrl = `${window.location.pathname}${window.location.hash}`;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
 }
 
 // Intersection Observer for fade-in animations
